@@ -1,0 +1,11 @@
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\bin\Debug\Proyecto v1.exe.config
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\bin\Debug\Proyecto v1.exe
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\bin\Debug\Proyecto v1.pdb
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto v1.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto_v1.home.resources
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto_v1.Admin.resources
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto_v1.Properties.Resources.resources
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto v1.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto v1.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto v1.exe
+C:\Users\Usuario\Desktop\ProyectoFinal-master\Proyecto v1\obj\Debug\Proyecto v1.pdb

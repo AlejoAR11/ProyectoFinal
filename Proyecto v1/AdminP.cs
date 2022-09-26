@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Proyecto_v1
 {
@@ -9,7 +10,7 @@ namespace Proyecto_v1
 
         string nombre, clave, documento, contacto;
         bool validar, validarId;
-       
+
 
         public Admin()
         {
@@ -23,11 +24,11 @@ namespace Proyecto_v1
             {
                 foreach (DataGridViewRow Row in dvgDirectivos.Rows)
                 {
-                    
+
                     txtName.Text = dvgDirectivos.CurrentRow.Cells["ColumnName"].Value.ToString();
                     txtContact.Text = dvgDirectivos.CurrentRow.Cells["ColumnContact"].Value.ToString();
                     txtId.Text = dvgDirectivos.CurrentRow.Cells["ColumnId"].Value.ToString();
-                    txtPass.Text = dvgDirectivos.CurrentRow.Cells["ColumnPass"].Value.ToString();
+                    txtPass.Text = dvgDirectivos.CurrentRow.Cells["ColumnPassword"].Value.ToString();
                 }
 
                 desactBtn();
@@ -48,7 +49,7 @@ namespace Proyecto_v1
             {
 
                 validarId = valId(documento);
-                if(validarId== true)
+                if (validarId == true)
                 {
 
                     dvgDirectivos.Rows.Add(nombre, documento, clave, contacto);
@@ -113,35 +114,72 @@ namespace Proyecto_v1
             clave = txtPass.Text;
             contacto = txtContact.Text;
             validar = valDatos(nombre, documento, clave, contacto);
+            validarId = true;
 
             if (validar == true)
             {
+                if (documento != dvgDirectivos.CurrentRow.Cells["ColumnId"].Value.ToString())
+                {
+                    validarId = valId(documento);
 
-                validarId = valId(documento);
+
+                }
                 if (validarId == true)
                 {
-
-                    dvgDirectivos.Rows.Add(nombre, documento, clave, contacto);
-                    MessageBox.Show("Usuario registrado con éxito");
+                    dvgDirectivos.CurrentRow.Cells["ColumnName"].Value = nombre;
+                    dvgDirectivos.CurrentRow.Cells["ColumnId"].Value = documento;
+                    dvgDirectivos.CurrentRow.Cells["ColumnPassword"].Value = clave;
+                    dvgDirectivos.CurrentRow.Cells["ColumnContact"].Value = contacto;
+                    MessageBox.Show("Usuario modificado correctamente");
+                    actBtn();
                     limpiar();
                 }
 
             }
         }
 
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+         
+
+            string question = "¿Eliminar este usuario?";
+            string title = "Eliminar usuario";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(question, title, buttons);
+
+            if(result == DialogResult.Yes)
+            {
+                dvgDirectivos.Rows.RemoveAt(dvgDirectivos.CurrentRow.Index);
+                MessageBox.Show("Usuario eliminado correctamente.");
+                actBtn();
+                limpiar();
+            }
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            guardarDatos();
+        }
+
         public bool valId(string id)
         {
             validarId = true;
 
-            for(int i=0; i<dvgDirectivos.Rows.Count; i++)
+            for (int i = 0; i < dvgDirectivos.Rows.Count; i++)
             {
-               
-                foreach(DataGridViewRow Row in dvgDirectivos.Rows)
+
+                foreach (DataGridViewRow Row in dvgDirectivos.Rows)
                 {
                     String strFila = ColumnId.Index.ToString();
                     string valor = Convert.ToString(Row.Cells["ColumnId"].Value);
 
-                    if(valor== id)
+                    if (valor == id)
                     {
                         MessageBox.Show("Ya existe este documento:");
                         errorProviderValidar.SetError(txtId, "Ingrese otro documento");
@@ -154,10 +192,22 @@ namespace Proyecto_v1
                         errorProviderValidar.SetError(txtId, "");
                         validarId = true;
                     }
-                    
+
                 }
             }
             return validarId;
+        }
+
+        private void guardarDatos()
+        {
+            StreamWriter baseDatos;
+            string linea;
+
+            baseDatos = new StreamWriter("./base.txt");
+
+            
+
+
         }
 
         private void limpiar()
@@ -167,10 +217,11 @@ namespace Proyecto_v1
             txtPass.Text = "";
             txtId.Text = "";
 
-    
+
         }
 
-        private void actBtn() {
+        private void actBtn()
+        {
 
             btnAdd.Enabled = true;
             btnSave.Enabled = true;

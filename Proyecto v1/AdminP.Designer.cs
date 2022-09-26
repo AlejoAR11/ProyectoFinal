@@ -213,6 +213,7 @@
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnMod
             // 
@@ -232,6 +233,7 @@
             this.btnDel.TabIndex = 6;
             this.btnDel.Text = "Eliminar";
             this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnAdd
             // 
@@ -265,6 +267,7 @@
             this.Controls.Add(this.gbDirectivos);
             this.Name = "Admin";
             this.Text = "Admin Page";
+            this.Load += new System.EventHandler(this.Admin_Load);
             this.gbDirectivos.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
